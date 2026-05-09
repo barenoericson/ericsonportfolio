@@ -1,30 +1,31 @@
 import { Link } from 'react-scroll'
 import profile from '../assets/profile.png'
 
-export default function Hero() {
-    const techIcons = [
-        { name: 'HTML',         icon: 'devicon-html5-plain colored' },
-        { name: 'CSS',          icon: 'devicon-css3-plain colored' },
-        { name: 'JavaScript',   icon: 'devicon-javascript-plain colored' },
-        { name: 'Vue 3',        icon: 'devicon-vuejs-plain colored' },
-        { name: 'React',        icon: 'devicon-react-original colored' },
-        { name: 'React Native', icon: 'devicon-react-original colored' },
-        { name: 'PHP',          icon: 'devicon-php-plain colored' },
-        { name: 'Laravel',      icon: 'devicon-laravel-original colored' },
-        { name: 'Node.js',      icon: 'devicon-nodejs-plain colored' },
-        { name: 'NestJS',       icon: 'devicon-nestjs-original colored' },
-        { name: 'ExpressJS',    icon: 'devicon-express-original' },
-        { name: 'MySQL',        icon: 'devicon-mysql-plain colored' },
-        { name: 'PostgreSQL',   icon: 'devicon-postgresql-plain colored' },
-        { name: 'Capacitor',    icon: 'devicon-capacitor-original colored' },
-      ]
+const techIcons = [
+  { name: 'HTML',         icon: 'devicon-html5-plain colored' },
+  { name: 'CSS',          icon: 'devicon-css3-plain colored' },
+  { name: 'JavaScript',   icon: 'devicon-javascript-plain colored' },
+  { name: 'Vue 3',        icon: 'devicon-vuejs-plain colored' },
+  { name: 'React',        icon: 'devicon-react-original colored' },
+  { name: 'React Native', icon: 'devicon-react-original colored' },
+  { name: 'PHP',          icon: 'devicon-php-plain colored' },
+  { name: 'Laravel',      icon: 'devicon-laravel-original colored' },
+  { name: 'Node.js',      icon: 'devicon-nodejs-plain colored' },
+  { name: 'NestJS',       icon: 'devicon-nestjs-original colored' },
+  { name: 'ExpressJS',    icon: 'devicon-express-original' },
+  { name: 'MySQL',        icon: 'devicon-mysql-plain colored' },
+  { name: 'PostgreSQL',   icon: 'devicon-postgresql-plain colored' },
+  { name: 'Capacitor',    icon: 'devicon-capacitor-original colored' },
+]
+
+export default function Hero({ darkMode }) {
   return (
     <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
 
       {/* Background gradient blobs */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-        <div className="absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-violet-700 opacity-20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] bg-indigo-600 opacity-20 rounded-full blur-[120px]" />
+        <div className={`absolute top-[-100px] left-[-100px] w-[500px] h-[500px] rounded-full blur-[120px] ${darkMode ? 'bg-violet-700 opacity-20' : 'bg-violet-300 opacity-30'}`} />
+        <div className={`absolute bottom-[-100px] right-[-100px] w-[500px] h-[500px] rounded-full blur-[120px] ${darkMode ? 'bg-indigo-600 opacity-20' : 'bg-indigo-300 opacity-30'}`} />
       </div>
 
       {/* Hero Content */}
@@ -32,18 +33,17 @@ export default function Hero() {
 
         {/* Text */}
         <div className="flex-1 text-center md:text-left">
-          <p className="text-violet-400 font-semibold tracking-widest uppercase text-sm mb-3">
+          <p className={`font-semibold tracking-widest uppercase text-sm mb-3 ${darkMode ? 'text-violet-400' : 'text-violet-600'}`}>
             Full Stack Developer · Cebu, PH
           </p>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
+          <h1 className={`text-5xl md:text-7xl font-extrabold leading-tight mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
             I build apps <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500">
               that actually work.
             </span>
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl max-w-xl mb-8">
-            3rd year BSIT student & freelance developer specializing in web and mobile apps.
-            From startups to real-world solutions.
+          <p className={`text-lg md:text-xl max-w-xl mb-8 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            3rd year BSIT student & freelance developer specializing in web and mobile apps. From startups to real-world solutions.
           </p>
 
           {/* CTA Buttons */}
@@ -62,7 +62,7 @@ export default function Hero() {
               smooth={true}
               duration={500}
               offset={-70}
-              className="cursor-pointer border border-violet-500 text-violet-400 hover:bg-violet-500 hover:text-white font-semibold px-8 py-3 rounded-full transition-all duration-200"
+              className={`cursor-pointer border border-violet-500 font-semibold px-8 py-3 rounded-full transition-all duration-200 ${darkMode ? 'text-violet-400 hover:bg-violet-500 hover:text-white' : 'text-violet-600 hover:bg-violet-500 hover:text-white'}`}
             >
               Contact Me
             </Link>
@@ -70,18 +70,12 @@ export default function Hero() {
 
           {/* Stats */}
           <div className="flex gap-8 mt-10 justify-center md:justify-start">
-            <div>
-              <p className="text-3xl font-bold text-white">3+</p>
-              <p className="text-gray-400 text-sm">Years Coding</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-white">2+</p>
-              <p className="text-gray-400 text-sm">Major Projects</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-white">10+</p>
-              <p className="text-gray-400 text-sm">Tech Stacks</p>
-            </div>
+            {[['3+', 'Years Coding'], ['2+', 'Major Projects'], ['10+', 'Tech Stacks']].map(([num, label]) => (
+              <div key={label}>
+                <p className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{num}</p>
+                <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{label}</p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -99,22 +93,20 @@ export default function Hero() {
       </div>
 
       {/* Tech Stack Marquee */}
-    <div className="relative z-10 w-full overflow-hidden py-6 border-t border-white/10">
-     <p className="text-center text-gray-500 text-xs uppercase tracking-widest mb-6">Tech Stack</p>
+      <div className={`relative z-10 w-full overflow-hidden py-6 border-t ${darkMode ? 'border-white/10' : 'border-gray-200'}`}>
+        <p className={`text-center text-xs uppercase tracking-widest mb-6 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>Tech Stack</p>
         <div className="flex animate-marquee whitespace-nowrap gap-8">
-             {[...techIcons, ...techIcons].map((tech, i) => (
-      <div
-        key={i}
-        className="flex flex-col items-center gap-2 px-4 group cursor-default"
-      >
-        <i className={`${tech.icon} text-5xl text-gray-400 group-hover:text-violet-400 transition-all duration-200`} />
-        <span className="text-gray-500 text-xs group-hover:text-violet-400 transition-all duration-200">
-          {tech.name}
-        </span>
+          {[...techIcons, ...techIcons].map((tech, i) => (
+            <div key={i} className="flex flex-col items-center gap-2 px-4 group cursor-default">
+              <i className={`${tech.icon} text-5xl group-hover:scale-110 transition-transform duration-200 ${!tech.icon.includes('colored') ? (darkMode ? 'text-gray-300' : 'text-gray-700') : ''}`} />
+              <span className={`text-xs group-hover:text-violet-500 transition-all duration-200 ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+                {tech.name}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
+
     </section>
   )
 }
